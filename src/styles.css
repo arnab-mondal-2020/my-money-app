@@ -1,0 +1,166 @@
+/* You can add global styles to this file, and also import other style files */
+.page-section {
+  position: relative;
+  border:0.1em solid #e5e5e5;
+  border-radius: 5px;
+  box-shadow: #dddddd 1px 1px;
+  padding:6px;
+  min-height: 400px;
+}
+.right-border {
+  border:0px;
+  border-right: 0.1em solid #e5e5e5;
+}
+.left-border {
+  border:0px;
+  border-left: 0.1em solid #e5e5e5;
+}
+.customer-manager-navbar {
+  background-color: #337ab7;
+  color: white !important;
+}
+a.customer-manager-navbar {
+  color: white !important;
+}
+.banner {
+  float: inside;
+  border-radius: 3px;
+  padding: 3px 3px 3px;
+  text-align: center;
+  font-family: "Arial";
+  font-size: 20px;
+  font-weight: bold;
+}
+.margin-x-lg {
+  margin-top:25px;
+}
+.margin-lg {
+  margin-top:15px;
+}
+
+.margin-md {
+  margin-top:10px;
+}
+
+.margin-sm {
+  margin-top:5px;
+}
+.margin-left-sm {
+  margin-left:5px;
+}
+.margin-left-md {
+  margin-left:10px;
+}
+.margin-left-lg {
+  margin-left:15px;
+}
+
+.padding-sm {
+  padding:5px;
+}
+.padding-md {
+  padding:10px;
+}
+.padding-lg {
+  padding:15px;
+}
+.padding-x-lg {
+  padding:20px;
+}
+.padding-xx-lg {
+  padding:25px;
+}
+.font-white {
+  color:#ffffff!important;
+}
+ul.font-white > li > a {
+  color:#ffffff!important;
+}
+.bg-blue {
+  background-color: #3b5999!important;
+}
+.validation-valid {
+  border:0.1em solid #00b700;
+}
+.validation-valid > i {
+  color: #00b700 !important;
+}
+.invalid > input {
+  border:0.1em solid #e30000;
+}
+.invalid > label {
+  color: #e30000;
+}
+.invalid > small {
+  color: #e30000;
+}
+.invalid > div> div > span {
+  border:0.1em solid #e30000;
+  border-right: 1px solid #ced4da;
+}
+.invalid > div> input, .invalid > div> select {
+  border:0.1em solid #e30000;
+  border-left: 1px solid #ced4da;;
+}
+.validation-invalid > i {
+  color : #e30000;
+}
+div.cms-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cms-card-sm {
+  min-height: 200px;
+  min-width: 180px;
+  max-width: 450px;
+}
+.cms-card-md {
+  min-height: 200px;
+  min-width: 350px;
+}
+.cms-card-lg {
+  min-height: 200px;
+  min-width: 650px;
+}
+.error {
+ color: #e30000;
+}
+.font-xx-sm {
+  font-size: 8px!important;
+}
+.font-x-sm {
+  font-size: 10px!important;
+}
+.font-sm {
+  font-size: 12px!important;
+}
+.font-md {
+  font-size: 16px!important;
+}
+.font-lg {
+  font-size: 20px!important;
+}
+.font-x-lg {
+  font-size: 24px!important;
+}
+.font-xx-lg {
+  font-size: 32px!important;
+}
+.font-billing {
+  font-family: "Consolas" !important;
+}
+.success-icon {
+  color: #00b700 !important;
+}
+.fail-icon {
+  color: #e30000 !important;
+}
+.required {
+  color: #e30000 !important;
+}
+.input-border-bottom-only {
+  border-top:none!important;
+  border-right:none!important;
+  border-left:none!important;
+  border-radius: 0;
+  border-width: 0.001em!important;
+}

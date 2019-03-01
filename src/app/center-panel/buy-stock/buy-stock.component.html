@@ -1,0 +1,77 @@
+<div class="cms-card cms-card-sm form-group-lg margin-md padding-md margin-left-sm">
+    <h3>Buy Stock</h3>
+    <p [ngClass]="" >
+        {{message}}
+    </p>
+    <form>
+      <table class="table table-borderless">
+        <tr>
+          <td colspan="2">
+            <!--Stock Name-->
+            <div class="form-group" [class.invalid]="stockName.touched && stockName.invalid">
+                <label class="label" for="quantity">Stock Name
+                  <span class="required">*</span>
+                </label>
+                <input class="form-control input-border-bottom-only"
+                      id="name" type="text" placeholder="Stock Name"
+                      textInputValidator
+                      [minLength]="3"
+                      [fieldName]="'Stock Name'"
+                      [(ngModel)]="entryForm.stockName"
+                      name="name" #stockName="ngModel" autocomplete="off">
+                <small *ngIf="stockName.touched && stockName.invalid">
+                  {{stockName.errors?.errorMessage}}
+                </small>
+              </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+             <!--Quantity-->
+             <div class="form-group" [class.invalid]="quantity.touched && quantity.invalid">
+               <label class="label" for="quantity">Quantity
+                 <span class="required">*</span>
+               </label>
+              <input class="form-control input-border-bottom-only font-lg"
+                    id="quantity" type="number" placeholder="0"
+                    numberInputValidator [minValue]="1" [fieldName]="'Quantity'"
+                    [category]="'quantity'"
+                    [required]=true
+                    [(ngModel)]="entryForm.quantity" name="quantity"
+                    #quantity="ngModel" autocomplete="off">
+
+              <small *ngIf="quantity.touched && quantity.invalid">
+                {{quantity.errors?.errorMessage}}
+              </small>
+            </div>
+          </td>
+          <td>
+              <!--Quantity-->
+             <div class="form-group" [class.invalid]="unitPrice.touched && unitPrice.invalid">
+                <label class="label" for="unitPrice">Unit Price
+                  <span class="required">*</span>
+                </label>
+              <input class="form-control input-border-bottom-only font-lg"
+                    id="unitPrice" type="text" placeholder="0.00"
+                    numberInputValidator [minValue]="1"
+                    [fieldName]="'Unit Price'"
+                    [required]=true
+                    [category]="'price'"
+                    [(ngModel)]="entryForm.unitPrice"
+                    name="unitPrice" #unitPrice="ngModel"
+                    autocomplete="off">
+
+              <small *ngIf="unitPrice.touched && unitPrice.invalid">
+                {{unitPrice.errors?.errorMessage}}
+              </small>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <div class="margin-lg text-right">
+        <button class="btn btn-md bg-blue font-white" (click)="addStock()">Submit</button>
+        <button class="btn btn-md bg-secondary font-white margin-left-sm">Reset</button>
+      </div>
+    </form>
+  </div>

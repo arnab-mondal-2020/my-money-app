@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-12 bg-light banner">
+      <p>My Money Summary</p>
+  </div>
+</div>
+<div class="row">
+  <!-- Recent items -->
+  <div class="col-sm-4">
+    <customer-orders [allOrders] = "allOrders"></customer-orders>
+  </div>
+  <!-- Buy Stocks -->
+  <div class="col-sm-4">
+    <buy-stock [entries]="entries" [stocks]="stocks"></buy-stock>
+  </div>
+  <!-- Sell Stocks -->
+  <div class="col-sm-4">
+    <sell-stock [entries]="entries" [stocks] = "stocks"></sell-stock>
+  </div>
+</div>
+<!--
+<div class="row">
+  <div class="col-sm-12">
+    <order-history [allOrders] = "allOrders"></order-history>
+  </div>
+</div>
+-->

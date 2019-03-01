@@ -1,0 +1,70 @@
+<div class="cms-card cms-card-sm form-group-lg margin-md padding-md margin-left-sm">
+    <h3>Sell Stock</h3>
+    <form>
+      <table class="table table-borderless">
+        <tr>
+          <td colspan="2">
+            <!--Stock Name-->
+            <div class="form-group">
+                <label class="label" for="quantity">Select a stock
+                  <span class="required">*</span>
+                </label>
+                <select class="form-control input-border-bottom-only"
+                      id="name" name="name">
+                      <option *ngFor="let stock of stocks" value="{{stock.unit.name}}">
+                          {{stock.unit.name}} --- {{stock.quantity}} stocks -- {{stock.unit.unitPrice | currency: 'INR'}}/unit
+                      </option>
+                </select>
+              </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+             <!--Quantity-->
+             <div class="form-group" [class.invalid]="quantity.touched && quantity.invalid">
+               <label class="label" for="quantity">Quantity
+                 <span class="required">*</span>
+               </label>
+              <input class="form-control input-border-bottom-only font-lg"
+                    id="quantity" type="number" placeholder="0"
+                    numberInputValidator [minValue]="1" [fieldName]="'Quantity'"
+                    [category]="'quantity'"
+                    [required]=true
+                    [(ngModel)]="entryForm.quantity" name="quantity"
+                    #quantity="ngModel" autocomplete="off">
+
+              <small *ngIf="quantity.touched && quantity.invalid">
+                {{quantity.errors?.errorMessage}}
+              </small>
+            </div>
+          </td>
+          <td>
+              <!--Quantity-->
+             <div class="form-group" [class.invalid]="unitPrice.touched && unitPrice.invalid">
+                <label class="label" for="unitPrice">Unit Price
+                  <span class="required">*</span>
+                </label>
+              <input class="form-control input-border-bottom-only font-lg"
+                    id="unitPrice" type="text" placeholder="0.00"
+                    numberInputValidator [minValue]="1"
+                    [fieldName]="'Unit Price'"
+                    [required]=true
+                    [category]="'price'"
+                    [(ngModel)]="entryForm.unitPrice"
+                    name="unitPrice" #unitPrice="ngModel"
+                    autocomplete="off">
+
+              <small *ngIf="unitPrice.touched && unitPrice.invalid">
+                {{unitPrice.errors?.errorMessage}}
+              </small>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <div class="margin-lg text-right">
+        <button class="btn btn-md bg-blue font-white" (click)="addEntry()">Submit</button>
+        <button class="btn btn-md bg-secondary font-white margin-left-sm">Reset</button>
+      </div>
+    </form>
+  </div>
