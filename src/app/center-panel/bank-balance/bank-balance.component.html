@@ -1,0 +1,33 @@
+<span [hidden]="isOperating">
+  <span class="fa fa-bank"></span>
+  &nbsp;&nbsp;&nbsp;
+  {{bankBalance.availableBalance | currency  : 'INR'}}
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a class="btn btn-lg" (click)="addAmtDisplay()">
+    <span class="fa fa-plus"></span>
+  </a>
+</span>
+
+<span [hidden]="!isOperating">
+  <form #addAmountForm name="addAmountForm">
+    <div class="form-inline" [class.invalid]="amount.touched && amount.invalid">
+
+      <label for="bank-amt">Amount : </label>&nbsp;&nbsp;
+      <input type="text" id="bank-amt" class="form-control" [(ngModel)]="amountInput"
+             name="amountInput"
+             #amount="ngModel"
+             numberInputValidator
+             [minValue]="1"
+             [fieldName]="'Amount'"
+             [category]="'amount'"
+             [required]="true">
+
+      <button class="btn btn-lg" (click)="addAmount(addAmountForm)" [disabled]="amount.invalid">
+        <span class="fa fa-check-square font-green"></span>
+      </button>
+      <button class="btn btn-lg font-white" (click)="amountCancel()">
+        <span class="fa fa-window-close font-red"></span>
+      </button>
+    </div>
+  </form>
+</span>

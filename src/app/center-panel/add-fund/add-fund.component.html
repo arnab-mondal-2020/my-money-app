@@ -21,16 +21,33 @@
                    [category]="'amount'"
                    [required]="true"
                    [(ngModel)]="funds"
-                   name="name" #amount="ngModel" autocomplete="off">
+                   BankBalanceValidator [maxBalance]="bankBalance.availableBalance"
+                   name="amountInput" #amount="ngModel" autocomplete="off">
             <small *ngIf="amount.touched && amount.invalid">
               {{amount.errors?.errorMessage}}
+              <span *ngIf="!amount.errors.errorMessage">
+                Maximum amount can be {{bankBalance.availableBalance | currency : 'INR'}}
+              </span>
             </small>
           </div>
         </td>
       </tr>
       <tr>
         <td>
-          <button class="btn btn-md bg-blue font-white" (click)="addFunds(addFundsForm)">Submit</button>
+          <div class="form-group">
+            <label class="label">Payment Method
+              <span class="required">*</span>
+            </label><br>
+            UPI&nbsp;&nbsp;<input type="radio" name="payMethod" value="upi" class="custom-radio" [(ngModel)]="payMethod">
+            Netbanking&nbsp;&nbsp;<input type="radio" name="payMethod" value="netbanking" class="custom-radio" [(ngModel)]="payMethod">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="btn btn-md bg-blue font-white" (click)="addFunds(addFundsForm, amount)"
+                  [disabled]="amount.invalid || !payMethod"
+          >Submit</button>
         </td>
       </tr>
     </table>

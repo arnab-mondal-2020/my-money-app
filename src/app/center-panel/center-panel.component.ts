@@ -16,7 +16,9 @@ export class CenterPanelComponent implements OnInit {
   fund = {
     totalFunds : 1000.00
   };
-
+  bankBalance = {
+    availableBalance : 0.0
+  };
   ngOnInit() {
     this.loadStocks();
   }

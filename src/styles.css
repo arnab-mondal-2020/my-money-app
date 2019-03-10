@@ -76,6 +76,18 @@ a.customer-manager-navbar {
 ul.font-white > li > a {
   color:#ffffff!important;
 }
+.font-red {
+  color: #ff0a34 !important;
+}
+ul.font-red > li > a {
+  color:#ff0a34!important;
+}
+.font-green {
+  color: #399839 !important;
+}
+ul.font-green > li > a {
+  color:#399839!important;
+}
 .bg-blue {
   background-color: #3b5999!important;
 }

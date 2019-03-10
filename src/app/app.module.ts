@@ -18,6 +18,8 @@ import { NumberInputValidator } from './validators/number-input-validator';
 import { BuyStockComponent } from './center-panel/buy-stock/buy-stock.component';
 import { SellStockComponent } from './center-panel/sell-stock/sell-stock.component';
 import { AddFundComponent } from './center-panel/add-fund/add-fund.component';
+import { BankBalanceComponent } from './center-panel/bank-balance/bank-balance.component';
+import {BankBalanceValidator} from './center-panel/bank-validator';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { AddFundComponent } from './center-panel/add-fund/add-fund.component';
     NumberInputValidator,
     BuyStockComponent,
     SellStockComponent,
-    AddFundComponent
+    AddFundComponent,
+    BankBalanceComponent,
+    BankBalanceValidator
   ],
   imports: [
     BrowserModule,

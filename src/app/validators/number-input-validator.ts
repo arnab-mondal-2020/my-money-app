@@ -22,7 +22,7 @@ export class NumberInputValidator implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
     let errorMsg: string;
     const val = control.value ? control.value : '';
-    // console.log('MAX VALUE ', this.maxValue, val, (parseFloat(val) > this.maxValue))
+    console.log('MAX VALUE ', this.maxValue, val, (parseFloat(val) > this.maxValue))
     if (this.required && val.length === 0) {
       errorMsg = 'Please enter a valid '
       + (this.category && this.category.length > 0 ? this.category : 'number') + '.';
