@@ -1,21 +1,20 @@
-import { AddEntryComponent } from './add-entry.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { AddFundComponent } from './add-fund.component';
 
-
-describe('AddEntryComponent', () => {
-  let component: AddEntryComponent;
-  let fixture: ComponentFixture<AddEntryComponent>;
+describe('AddFundComponent', () => {
+  let component: AddFundComponent;
+  let fixture: ComponentFixture<AddFundComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddEntryComponent ]
+      declarations: [ AddFundComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddEntryComponent);
+    fixture = TestBed.createComponent(AddFundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

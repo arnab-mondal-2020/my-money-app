@@ -1,0 +1,38 @@
+<div class="cms-card cms-card-sm form-group-lg margin-md padding-md margin-left-sm">
+  <h3>Add Fund</h3>
+  <p *ngIf="addedFunds > 0" class="font-md success-icon">
+    <span class="fa fa-check-circle"></span>&nbsp;&nbsp;
+    Successfully added funds {{addedFunds | currency : 'INR'}}
+  </p>
+  <form #addFundsForm>
+    <table class="table table-borderless">
+      <tr>
+        <td>
+          <!--Stock Name-->
+          <div class="form-group" [class.invalid]="amount.touched && amount.invalid">
+            <label class="label" for="amount">Amount
+              <span class="required">*</span>
+            </label>
+            <input class="form-control input-border-bottom-only"
+                   id="amount" type="number" placeholder="Amount"
+                   numberInputValidator
+                   [minValue]="1"
+                   [fieldName]="'Funds'"
+                   [category]="'amount'"
+                   [required]="true"
+                   [(ngModel)]="funds"
+                   name="name" #amount="ngModel" autocomplete="off">
+            <small *ngIf="amount.touched && amount.invalid">
+              {{amount.errors?.errorMessage}}
+            </small>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="btn btn-md bg-blue font-white" (click)="addFunds(addFundsForm)">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

@@ -1,9 +1,13 @@
 <div class="cms-card cms-card-sm form-group-lg margin-md padding-md margin-left-sm">
     <h3>Buy Stock</h3>
-    <p [ngClass]="" >
-        {{message}}
+    <p *ngIf="message || error" [ngClass]="error ? 'error-msg-box' : 'success-msg-box'" class="msg-box">
+      <span [ngClass]="error ? 'fa fa-exclamation-circle' : 'fa fa-check-circle'"></span>
+      <span *ngIf="error">
+        Required funds {{requiredFunds | currency : 'INR'}}, available funds {{this.fund.totalFunds | currency : 'INR'}}
+      </span>
+      <span *ngIf="message">{{message}}</span>
     </p>
-    <form>
+    <form #buyStockForm>
       <table class="table table-borderless">
         <tr>
           <td colspan="2">
@@ -70,8 +74,10 @@
       </table>
 
       <div class="margin-lg text-right">
-        <button class="btn btn-md bg-blue font-white" (click)="addStock()">Submit</button>
-        <button class="btn btn-md bg-secondary font-white margin-left-sm">Reset</button>
+        <button class="btn btn-md bg-blue font-white"
+                [disabled]="stockName.invalid || quantity.invalid || unitPrice.invalid"
+                (click)="addStock(buyStockForm)">Submit</button>
+        <button class="btn btn-md bg-secondary font-white margin-left-sm" (click)="resetForm(buyStockForm)">Reset</button>
       </div>
     </form>
   </div>

@@ -1,6 +1,12 @@
 <div class="cms-card cms-card-sm form-group-lg margin-md padding-md margin-left-sm">
-    <h3>Sell Stock</h3>
-    <form>
+  <h3>Sell Stock</h3>
+  <p *ngIf="done" class="font-weight-bold font-md success-icon">
+    <span class="fa fa-check-circle"></span> Stock {{soldStock}} of quantity {{soldQuantity}} sold @ {{soldUnitPrice | currency : 'INR'}}/unit.
+    <br>
+    <span style="margin-top: 4px;" [ngClass]="isLoss ? 'error fa fa fa-frown-o' : 'success-icon fa fa-smile-o'"></span>
+    You have <span [ngClass]="isLoss ? 'error' : 'success-icon'">{{isLoss ? 'LOST' : 'EARNED'}} {{gain | currency : 'INR'}}</span>
+  </p>
+    <form #sellStockForm>
       <table class="table table-borderless">
         <tr>
           <td colspan="2">
@@ -10,9 +16,9 @@
                   <span class="required">*</span>
                 </label>
                 <select class="form-control input-border-bottom-only"
-                      id="name" name="name">
+                      id="name" name="name" [(ngModel)]="selectedStock" (change)="changeOption()">
                       <option *ngFor="let stock of stocks" value="{{stock.unit.name}}">
-                          {{stock.unit.name}} --- {{stock.quantity}} stocks -- {{stock.unit.unitPrice | currency: 'INR'}}/unit
+                          {{stock.unit.name}} --- {{stock.quantity}} stock{{stock.quantity > 1 ? 's' : ''}} -- {{stock.unit.unitPrice | currency: 'INR'}}/unit
                       </option>
                 </select>
               </div>
@@ -27,10 +33,13 @@
                </label>
               <input class="form-control input-border-bottom-only font-lg"
                     id="quantity" type="number" placeholder="0"
-                    numberInputValidator [minValue]="1" [fieldName]="'Quantity'"
+                    numberInputValidator
+                     [minValue]="1"
+                     [maxValue]="maxStock"
+                     [fieldName]="'Quantity'"
                     [category]="'quantity'"
                     [required]=true
-                    [(ngModel)]="entryForm.quantity" name="quantity"
+                    [(ngModel)]="sellQuantity" name="quantity"
                     #quantity="ngModel" autocomplete="off">
 
               <small *ngIf="quantity.touched && quantity.invalid">
@@ -50,7 +59,7 @@
                     [fieldName]="'Unit Price'"
                     [required]=true
                     [category]="'price'"
-                    [(ngModel)]="entryForm.unitPrice"
+                    [(ngModel)]="sellUnitPrice"
                     name="unitPrice" #unitPrice="ngModel"
                     autocomplete="off">
 
@@ -63,8 +72,11 @@
       </table>
 
       <div class="margin-lg text-right">
-        <button class="btn btn-md bg-blue font-white" (click)="addEntry()">Submit</button>
-        <button class="btn btn-md bg-secondary font-white margin-left-sm">Reset</button>
+        <button class="btn btn-md bg-blue font-white" (click)="sell(sellStockForm)"
+                [disabled]="(quantity.invalid) || (unitPrice.touched && unitPrice.invalid)">
+          Submit
+        </button>
+        <button class="btn btn-md bg-secondary font-white margin-left-sm" (click)="resetForm(sellStockForm)">Reset</button>
       </div>
     </form>
   </div>

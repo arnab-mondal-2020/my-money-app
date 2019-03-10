@@ -164,3 +164,17 @@ div.cms-card {
   border-radius: 0;
   border-width: 0.001em!important;
 }
+.msg-box {
+  margin-top:8px;
+  border: 0.5px solid black;
+  padding:8px;
+  border-radius: 5px;
+}
+.success-msg-box{
+  border-color:darkgreen!important;
+  color: darkgreen!important;
+}
+.error-msg-box{
+  border-color:darkred!important;
+  color: darkred!important;
+}

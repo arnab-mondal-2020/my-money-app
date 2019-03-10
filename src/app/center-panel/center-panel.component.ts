@@ -1,8 +1,6 @@
-import { Unit } from './add-entry/unit';
+import { Unit } from '../unit';
 import { Component, OnInit } from '@angular/core';
-import {PartyOrder} from './party-order';
-import {AllOrdersSummary} from './all-orders-summary';
-import { TransactionUnit } from './add-entry/transaction-unit';
+import { TransactionUnit } from '../transaction-unit';
 
 @Component({
   selector: 'center-panel',
@@ -13,13 +11,35 @@ export class CenterPanelComponent implements OnInit {
 
   constructor() { }
   entries = new Array<any>();
-  allOrders = new AllOrdersSummary();
   stocks = new Array<TransactionUnit>();
+
+  fund = {
+    totalFunds : 1000.00
+  };
 
   ngOnInit() {
     this.loadStocks();
   }
-
+  getStock(name: string) {
+    return this.contains(name) ? this.stocks[this.getStockIndex(name)] : undefined;
+  }
+  removeStock(name: string) {
+    if (this.contains(name)) {
+      this.stocks.splice(this.getStockIndex(name), 1);
+    }
+  }
+  getStockIndex(name: string) {
+    for (let i = 0; i < this.stocks.length; i++) {
+      const item = this.stocks[i];
+      if (item.unit.name === name) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  contains(name: string): boolean {
+    return this.getStockIndex(name) > -1;
+  }
   private loadStocks() {
     const u1 = new Unit('MARICO', 334.35);
     const s1 = new TransactionUnit(u1, 3, 'B');

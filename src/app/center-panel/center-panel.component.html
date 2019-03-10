@@ -1,20 +1,27 @@
 <div class="row">
+  <div class="col-sm-3 bg-light banner">
+    <span class="text-left success-icon font-x-lg">
+      Funds available : {{fund.totalFunds | currency : 'INR'}}
+    </span>
+  </div>
+  <div class="col-sm-6 bg-light banner">
+    <span class="text-center">My Money Summary</span>
+  </div>
   <div class="col-sm-12 bg-light banner">
-      <p>My Money Summary</p>
   </div>
 </div>
 <div class="row">
   <!-- Recent items -->
   <div class="col-sm-4">
-    <customer-orders [allOrders] = "allOrders"></customer-orders>
+    <add-fund [fund]="fund"></add-fund>
   </div>
   <!-- Buy Stocks -->
   <div class="col-sm-4">
-    <buy-stock [entries]="entries" [stocks]="stocks"></buy-stock>
+    <buy-stock [entries]="entries" [stocks]="stocks" [fund]="fund"></buy-stock>
   </div>
   <!-- Sell Stocks -->
   <div class="col-sm-4">
-    <sell-stock [entries]="entries" [stocks] = "stocks"></sell-stock>
+    <sell-stock [entries]="entries" [stocks] = "stocks" [fund]="fund"></sell-stock>
   </div>
 </div>
 <!--
